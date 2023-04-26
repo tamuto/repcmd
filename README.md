@@ -1,20 +1,21 @@
 # Report Command Tool
 
-## Usage
+This project is an open-source software that includes both Java and Python tools.
 
-* directory
+## Java Command-line Tool
+
+The Java tool is a command-line tool that uses the JasperReports Library and is distributed under the LGPL.
+This tool includes the following functionality:
+
+* Receives data in JSON format, embeds the data into a report template, and outputs a PDF.
+
+### Usage
 
 ```sh
-java -jar repcmd.jar < data.json > out.pdf
+java -jar repcmd-1.0.jar < data.json > out.pdf
 ```
 
-* docker
-
-```sh
-docker run -it tamuto/repcmd < data.json > out.pdf
-```
-
-* Python Binding
+* Python Binding Tool
 
 <<under consideration>>
 
@@ -25,3 +26,8 @@ result = repcmd.execute(data)
 with open('out.pdf', 'wb') as f:
     f.write(result)
 ```
+
+## License
+
+This project is provided under the LGPL license for the Java tool and the MIT license for the Python tool.
+Please refer to the respective license files for more details.
