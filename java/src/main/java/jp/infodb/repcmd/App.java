@@ -24,7 +24,7 @@ public class App
                 System.in,
                 new TypeReference<Map<String, Object>>(){});
             
-            String name = (String) map.get("name");
+            String name = (String) map.get("template");
             logger.info("template: " + name);
 
             Report report = new Report(name);
