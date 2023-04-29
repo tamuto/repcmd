@@ -12,7 +12,14 @@ This tool includes the following functionality:
 ### Usage
 
 ```sh
-java -jar repcmd-1.0.jar < data.json > out.pdf
+repcmd.sh data.json > out.pdf
+```
+
+### Build
+
+```
+pnpm run build:java
+pnpm run release
 ```
 
 * Python Binding Tool
