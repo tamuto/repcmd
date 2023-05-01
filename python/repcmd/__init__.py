@@ -1,5 +1,15 @@
-__version__ = '0.1.0'
+import subprocess
+import json
+import os
+
+__version__ = '1.0.1'
 
 
 def execute(data):
-    pass
+    inp = json.dumps(data, ensure_ascii=False)
+    cmd = f'{os.path.dirname(__file__)}/repcmd.sh'
+    result = subprocess.run(
+        [cmd],
+        input=inp.encode(),
+        stdout=subprocess.PIPE)
+    return result.stdout

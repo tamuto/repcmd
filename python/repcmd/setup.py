@@ -1,13 +1,12 @@
-import urllib
+import urllib.request
 import tarfile
 import io
 import os
 
-from . import __version__
-
+release_tag = 'v1.0.1'
 
 if __name__ == '__main__':
-    url = f'https://{__version__}'
+    url = f'https://github.com/tamuto/repcmd/releases/download/{release_tag}/repcmd.tar.gz'
 
     response = urllib.request.urlopen(url)
     
