@@ -7,6 +7,7 @@
     "build": "infodb-cli runall build:*",
     "build:java": "cd java; mvn clean dependency:copy-dependencies compile package",
     "build:python": "cd python; poetry build",
+    "publish": "cd python; poetry publish",
     "exec:java": "cd java; mvn exec:java"
   },
   "keywords": [],
