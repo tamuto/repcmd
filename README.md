@@ -12,14 +12,23 @@ This tool includes the following functionality:
 ### Usage
 
 ```sh
-repcmd.sh data.json > out.pdf
+repcmd.sh < data.json > out.pdf
 ```
 
 ### Build
 
 ```
-pnpm run build:java
-pnpm run release
+apt-get update
+apt-get install openjdk-17-jdk maven
+
+bun run build:java
+bun run release
+```
+
+### Sample Report
+
+```
+dist/repcmd.sh < ./etc/test.json > test.pdf
 ```
 
 * Python Binding Tool

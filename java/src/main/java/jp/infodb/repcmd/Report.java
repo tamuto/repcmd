@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -16,10 +15,15 @@ public class Report {
     private String name;
     private Map<String, Object> map;
     private JRDataSource ds;
-    
+
     public Report(String name) {
         this.name = name;
         this.map = new HashMap<>();
+    }
+
+    public void reset() {
+        map.clear();
+        ds = null;
     }
 
     public void addItem(String name, String value) {
@@ -30,11 +34,10 @@ public class Report {
         ds = new JRMapCollectionDataSource(col);
     }
 
-    public void execute() throws JRException {
+    public JasperPrint execute() throws JRException {
         if (ds == null) {
             ds = new JREmptyDataSource();
         }
-        JasperPrint print = JasperFillManager.fillReport(name, map, ds);
-        JasperExportManager.exportReportToPdfStream(print, System.out);
+        return JasperFillManager.fillReport(name, map, ds);
     }
 }
