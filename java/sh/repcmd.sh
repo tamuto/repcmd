@@ -1,6 +1,6 @@
 #!/bin/bash
 cd `dirname $0`
-CLASSPATH=.:repcmd-1.1.0.jar
+CLASSPATH=.:repcmd-1.2.0.jar
 for i in lib/*.jar; do
   CLASSPATH=$CLASSPATH:$i
 done
