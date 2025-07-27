@@ -43,7 +43,7 @@ dist/repcmd.sh < ./etc/test.json > test.pdf
 ### Java Component (`java/`)
 - **Main class**: `jp.infodb.repcmd.App` - Entry point that reads JSON from stdin and outputs PDF to stdout
 - **Report class**: `jp.infodb.repcmd.Report` - Wraps JasperReports functionality for template processing
-- **Dependencies**: JasperReports 6.20.0, Jackson for JSON parsing
+- **Dependencies**: JasperReports 6.21.5, Jackson for JSON parsing
 - **Build**: Maven-based with Java 1.7 compatibility
 
 ### Python Component (`python/`)
@@ -67,12 +67,15 @@ dist/repcmd.sh < ./etc/test.json > test.pdf
 
 When updating the version number, the following files need to be updated:
 
-1. **Java Component**:
+1. **Project Root**:
+   - `package.json`: Update `version` field
+
+2. **Java Component**:
    - `java/pom.xml`: Update `<version>` tag
    - `java/release.sh`: Update JAR filename in copy command
    - `java/sh/repcmd.sh`: Update JAR filename in CLASSPATH
 
-2. **Python Component**:
+3. **Python Component**:
    - `python/pyproject.toml`: Update `version` field
    - `python/repcmd/__init__.py`: Update `__version__` variable
    - `python/repcmd/setup.py`: Update `release_tag` variable
