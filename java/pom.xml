@@ -6,7 +6,7 @@
 
   <groupId>jp.infodb</groupId>
   <artifactId>repcmd</artifactId>
-  <version>1.1.0</version>
+  <version>1.2.0</version>
 
   <name>repcmd</name>
   <!-- FIXME change it to the project's website -->
@@ -23,7 +23,7 @@
       <dependency>
           <groupId>net.sf.jasperreports</groupId>
           <artifactId>jasperreports</artifactId>
-          <version>6.20.0</version>
+          <version>6.21.5</version>
       </dependency>
 
     <dependency>

@@ -3,7 +3,7 @@ import tarfile
 import io
 import os
 
-release_tag = 'v1.1.0'
+release_tag = 'v1.2.0'
 
 if __name__ == '__main__':
     url = f'https://github.com/tamuto/repcmd/releases/download/{release_tag}/repcmd.tar.gz'

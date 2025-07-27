@@ -21,8 +21,8 @@ repcmd.sh < data.json > out.pdf
 apt-get update
 apt-get install openjdk-17-jdk maven
 
-bun run build:java
-bun run release
+pnpm run build:java
+pnpm run release
 ```
 
 ### Sample Report
