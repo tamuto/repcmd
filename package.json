@@ -1,10 +1,9 @@
 {
   "name": "repcmd",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "",
   "scripts": {
     "release": "./java/release.sh",
-    "build": "infodb-cli runall build:*",
     "build:java": "cd java; mvn clean dependency:copy-dependencies compile package",
     "build:python": "cd python; poetry build",
     "publish": "cd python; poetry publish",
