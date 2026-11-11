@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fontFamilies>
+   <!--
+     Place ipaexg.ttf (IPAex Gothic) in this directory.
+     Download: https://moji.or.jp/ipafont/ipafontdownload/
+     Keep the IPA Font License Agreement file from the download alongside it.
+   -->
+   <fontFamily name="ipaexg">
+       <normal>ipaexg.ttf</normal>
+       <pdfEncoding>Identity-H</pdfEncoding>
+       <pdfEmbedded>true</pdfEmbedded>
+   </fontFamily>
+</fontFamilies>
