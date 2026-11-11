@@ -156,3 +156,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Font files are not distributed with this project (see README)
+etc/fonts/*.ttf
+etc/fonts/*.otf
+etc/fonts/*.ttc
+etc/fonts/*.txt

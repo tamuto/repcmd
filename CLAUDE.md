@@ -34,8 +34,8 @@ pnpm run release
 # Run Java application with test data
 pnpm run exec:java
 
-# Test with sample data
-dist/repcmd.sh < ./etc/test.json > test.pdf
+# Test with sample data (ipaexg.ttf must be placed in etc/fonts/ beforehand)
+REPCMD_FONT_DIR=$(pwd)/etc/fonts dist/repcmd.sh < ./etc/test.json > test.pdf
 ```
 
 ## Architecture
@@ -47,9 +47,14 @@ dist/repcmd.sh < ./etc/test.json > test.pdf
 - **Build**: Maven-based with Java 1.7 compatibility
 
 ### Python Component (`python/`)
-- **Main module**: `repcmd/__init__.py` - Provides `execute()` function that calls Java tool via subprocess
+- **Main module**: `repcmd/__init__.py` - Provides `execute(data, font_dir=None)` that calls Java tool via subprocess; `font_dir` (or env `REPCMD_FONT_DIR`) is passed to `repcmd.sh` as an absolute path, and `RepcmdError` is raised on non-zero exit or empty output
 - **Build**: Poetry-based packaging
 - **Python version**: Requires Python 3.9+
+
+### Fonts
+- Font files are NOT bundled (since v1.3.0) because the bundled IPAex font lacked its license file
+- `repcmd.sh` appends `$REPCMD_FONT_DIR` to the classpath; that directory is a JasperReports font extension (`jasperreports_extension.properties` + font XML + font files)
+- Templates for the extension files are in `etc/fonts/`; font files there are git-ignored and must never be committed
 
 ### Data Flow
 1. JSON input contains `template` (JasperReports template path) and `data` (array of datasets)
@@ -62,6 +67,7 @@ dist/repcmd.sh < ./etc/test.json > test.pdf
 - `python/pyproject.toml`: Poetry configuration
 - `java/release.sh`: Script to package Java distribution with dependencies
 - `etc/test.json`: Sample input data for testing
+- `etc/fonts/`: Font extension templates (font files are obtained separately)
 
 ## Version Update Procedure
 
@@ -91,3 +97,4 @@ When updating the version number, the following files need to be updated:
 - Java component requires JDK 17+ for building but targets Java 1.7 runtime
 - Python component shells out to Java tool, requiring Java runtime in deployment
 - Templates are JasperReports .jasper files (compiled .jrxml templates)
+- `mvn exec:java` (`pnpm run exec:java`) has no fonts on its classpath, so the sample template fails unless a font extension is added
