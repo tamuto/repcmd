@@ -44,7 +44,7 @@ REPCMD_FONT_DIR=$(pwd)/etc/fonts dist/repcmd.sh < ./etc/test.json > test.pdf
 - **Main class**: `jp.infodb.repcmd.App` - Entry point that reads JSON from stdin and outputs PDF to stdout
 - **Report class**: `jp.infodb.repcmd.Report` - Wraps JasperReports functionality for template processing
 - **Dependencies**: JasperReports 6.21.5, Jackson for JSON parsing
-- **Build**: Maven-based with Java 1.7 compatibility
+- **Build**: Maven-based (compiler source/target in `pom.xml` is still 1.7, but dependencies require Java 8+)
 
 ### Python Component (`python/`)
 - **Main module**: `repcmd/__init__.py` - Provides `execute(data, font_dir=None)` that calls Java tool via subprocess; `font_dir` (or env `REPCMD_FONT_DIR`) is passed to `repcmd.sh` as an absolute path, and `RepcmdError` is raised on non-zero exit or empty output
@@ -94,7 +94,8 @@ When updating the version number, the following files need to be updated:
 ## Development Notes
 
 - Version is maintained separately in `pom.xml` (Java) and `pyproject.toml` (Python)
-- Java component requires JDK 17+ for building but targets Java 1.7 runtime
+- Java component is built and run with JDK/JRE 17. Java 7 does NOT work: JasperReports 6.21.5, Jackson 2.17 and OpenPDF are compiled for Java 8 (verified: UnsupportedClassVersionError on OpenJDK 1.7.0_352)
+- The `pom.xml` compiler target (1.7) is outdated and will be updated separately; Java 17 is not available on Debian 13, so a newer JDK must be verified
 - Python component shells out to Java tool, requiring Java runtime in deployment
 - Templates are JasperReports .jasper files (compiled .jrxml templates)
 - `mvn exec:java` (`pnpm run exec:java`) has no fonts on its classpath, so the sample template fails unless a font extension is added
